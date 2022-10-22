@@ -1,0 +1,1 @@
+wget https://www.cs.put.poznan.pl/kjankiewicz/bigdata/projekt1/zestaw4.zip
