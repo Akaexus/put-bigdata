@@ -10,12 +10,13 @@ for line in sys.stdin:
     current_acted = int(current_acted)
     current_directed = int(current_directed)
     if current_person != person:
-        print(f'{person}\t{acted}\t{directed}')
+        if person is not None:
+            print(f'{person}\t{acted}\t{directed}')
         person = current_person
         acted = current_acted
         directed = current_directed
     else:
         acted += current_acted
         directed += current_directed
-
-print(f'{person}\t{acted}\t{directed}')
+if person is not None:
+    print(f'{person}\t{acted}\t{directed}')

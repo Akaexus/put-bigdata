@@ -28,17 +28,15 @@ hadoop fs -copyFromLocal *.py project_files
 echo " "
 echo ">>>> uruchamianie zadania MapReduce - przetwarzanie (2)"
 # TODO: proszę dostosować poniższe polecenie tak, aby uruchamiało ono zadanie MapReduce (2)
-#przykład dla MapReduce Classic
-hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
--files mapper.py, combiner.py, reducer.py \
+mapred streaming \
+-files mapper.py,combiner.py,reducer.py \
 -input input/datasource1 \
 -mapper  mapper.py \
 -combiner combiner.py \
 -reducer reducer.py \
--output output_mr3 \
-- . . .
+-output output_mr3
 
-
+exit
 echo " "
 echo ">>>> uruchamianie skryptu Hive/Pig - przetwarzanie (5)"
 # TODO: proszę dostosować poniższe polecenie aby uruchamiało ono skrypt Hive lub Pig (5)
