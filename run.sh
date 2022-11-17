@@ -1,8 +1,8 @@
 ﻿#!/bin/bash
 # założenia:
-#   (1) w katalogu bieżącym lokalnego systemu plików węzła master znajdują się 
+#   (1) w katalogu bieżącym lokalnego systemu plików węzła master znajdują się
 #       oprócz tego pliku (skryptu) także wszystkie inne pliki wchodzące w skład Twojego projektu (zawartość Twojego pliku projekt1.zip)
-#   (2) w katalogu input znajdującym się w katalogu domowym użytkownika w systemie plików HDFS w katalogach podrzędnych 
+#   (2) w katalogu input znajdującym się w katalogu domowym użytkownika w systemie plików HDFS w katalogach podrzędnych
 #       datasource1 oraz datasource4 znajdują się rozpakowane pliki źródłowego zestawu danych - zestaw danych (1) i (4)
 
 
@@ -21,7 +21,7 @@ if $(test -d ./output6) ; then rm -rf ./output6; fi
 echo " "
 echo ">>>> kopiowanie skryptów, plików jar i wszystkiego co musi być dostępne w HDFS do uruchomienia projektu"
 hadoop fs -mkdir project_files
-# TODO: proszę dostosować poniższe polecenia tak, aby wszystkie skrypty, pliki jar i inne, 
+# TODO: proszę dostosować poniższe polecenia tak, aby wszystkie skrypty, pliki jar i inne,
 # które muszą do uruchomienia projektu być dostępne z poziomu HDFS, znalazły się w katalogu ./project_files
 hadoop fs -copyFromLocal *.py project_files
 
@@ -30,21 +30,21 @@ echo ">>>> uruchamianie zadania MapReduce - przetwarzanie (2)"
 # TODO: proszę dostosować poniższe polecenie tak, aby uruchamiało ono zadanie MapReduce (2)
 mapred streaming \
 -files mapper.py,combiner.py,reducer.py \
--input input/datasource1 \
+-input projekt1/input/datasource1 \
 -mapper  mapper.py \
 -combiner combiner.py \
 -reducer reducer.py \
 -output output_mr3
 
-exit
+
 echo " "
 echo ">>>> uruchamianie skryptu Hive/Pig - przetwarzanie (5)"
 # TODO: proszę dostosować poniższe polecenie aby uruchamiało ono skrypt Hive lub Pig (5)
 #przykład dla Hive
-hive -f transform5.hql 
+# hive -f transform5.hql
 #przykład dla Pig
 pig -f transform5.pig
-
+exit
 echo " "
 echo ">>>> pobieranie ostatecznego wyniku (6) z HDFS do lokalnego systemu plików"
 mkdir -p ./output6
