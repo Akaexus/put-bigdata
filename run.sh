@@ -30,7 +30,7 @@ echo ">>>> uruchamianie zadania MapReduce - przetwarzanie (2)"
 # TODO: proszę dostosować poniższe polecenie tak, aby uruchamiało ono zadanie MapReduce (2)
 mapred streaming \
 -files mapper.py,combiner.py,reducer.py \
--input projekt1/input/datasource1 \
+-input input/datasource1 \
 -mapper  mapper.py \
 -combiner combiner.py \
 -reducer reducer.py \
@@ -44,7 +44,7 @@ echo ">>>> uruchamianie skryptu Hive/Pig - przetwarzanie (5)"
 # hive -f transform5.hql
 #przykład dla Pig
 pig -f transform5.pig
-exit
+
 echo " "
 echo ">>>> pobieranie ostatecznego wyniku (6) z HDFS do lokalnego systemu plików"
 mkdir -p ./output6
