@@ -12,7 +12,7 @@ REGISTER /usr/lib/pig/piggybank.jar;
 -- nm0000008       Marlon Brando   1924    2004    actor,soundtrack,director       tt0068646,tt0047296,tt0078788,tt0070849
 -- nm0000009       Richard Burton  1925    1984    actor,producer,soundtrack       tt0087803,tt0059749,tt0057877,tt0061184
 
-movies_count = LOAD 'output_mr3/part-*' USING org.apache.pig.piggybank.storage.CSVExcelStorage(
+movies_count = LOAD '$input_dir3/part-*' USING org.apache.pig.piggybank.storage.CSVExcelStorage(
   '\t',
   'NO_MULTILINE',
   'NOCHANGE'
@@ -22,7 +22,7 @@ movies_count = LOAD 'output_mr3/part-*' USING org.apache.pig.piggybank.storage.C
   directed:int
 );
 
-people = LOAD 'input/datasource4/name.basics.tsv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(
+people = LOAD '$input_dir4/datasource4/name.basics.tsv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(
   '\t',
   'NO_MULTILINE',
   'NOCHANGE',
@@ -65,5 +65,5 @@ top3_directors_projected = FOREACH top3_directors GENERATE primaryName as primar
 result = UNION top3_actors_projected, top3_directors_projected;
 
 STORE result
-    INTO 'output6'
+    INTO '$output_dir6'
     USING JsonStorage();

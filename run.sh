@@ -43,7 +43,7 @@ echo ">>>> uruchamianie skryptu Hive/Pig - przetwarzanie (5)"
 #przykład dla Hive
 # hive -f transform5.hql
 #przykład dla Pig
-pig -f transform5.pig
+pig -f transform5.pig -p output_dir6=output6 -p input_dir3=output_mr3 -p input_dir4=input
 
 echo " "
 echo ">>>> pobieranie ostatecznego wyniku (6) z HDFS do lokalnego systemu plików"
