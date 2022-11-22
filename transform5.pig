@@ -22,7 +22,7 @@ movies_count = LOAD '$input_dir3/part-*' USING org.apache.pig.piggybank.storage.
   directed:int
 );
 
-people = LOAD '$input_dir4/datasource4/name.basics.tsv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(
+people = LOAD '$input_dir4/name.basics.tsv' USING org.apache.pig.piggybank.storage.CSVExcelStorage(
   '\t',
   'NO_MULTILINE',
   'NOCHANGE',
